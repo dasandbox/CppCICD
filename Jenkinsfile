@@ -3,10 +3,10 @@ pipeline {
 
     options {
         timestamps() // Add timestamps to logging
-        timeout(time: 2, unit: 'HOURS') // Abort pipleine if it runs too long
+        //timeout(time: 2, unit: 'HOURS') // Abort pipleine if it runs too long
 	
         buildDiscarder(logRotator(numToKeepStr: '8', artifactNumToKeepStr: '8'))
-        // disableConcurrentBuilds()
+        disableConcurrentBuilds()
     }
 
     parameters {
