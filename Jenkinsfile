@@ -10,7 +10,7 @@ pipeline {
     }
 
     parameters {
-        booleanParam(name: 'RunTestManager', defaultValue: true, description: 'Run all Test Manager tests?')
+        booleanParam(name: 'RunTestManager', defaultValue: false, description: 'Run all Test Manager tests?')
     }
     
     stages {
@@ -55,7 +55,7 @@ pipeline {
             steps {
                 echo 'Stage: Test Manager'
                 echo 'Triggering TM'
-                build(job: '/TestMgrRunOne/main', parameters: [string(name: 'TestName', value: "SomeTestName")], wait: true)
+                build(job: '/TestMgrRunOne/main', parameters: [string(name: 'TestName', value: "Basic GoPath_TC")], wait: true)
             }
         }
         stage('Cleanup') {
