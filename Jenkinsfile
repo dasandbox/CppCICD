@@ -3,7 +3,7 @@ pipeline {
 
     options {
         timestamps() // Add timestamps to logging
-        //timeout(time: 2, unit: 'HOURS') // Abort pipleine if it runs too long
+        //timeout(time: 10, unit: 'MINUTES') // Abort pipleine if it runs too long
 	
         buildDiscarder(logRotator(numToKeepStr: '8', artifactNumToKeepStr: '8'))
         disableConcurrentBuilds()
@@ -52,13 +52,12 @@ pipeline {
             steps {
                 echo 'Stage: Test'
                 echo 'Triggering tm'
-                build(job: '/tm/master', wait: true)
+                build(job: '/TestMgrRunOne/main', wait: true)
             }
         }
         stage('Cleanup') {
             steps {
                 echo 'Stage: Cleanup'
-                //deleteDir()
             }
         }
 
