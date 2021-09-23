@@ -55,7 +55,7 @@ pipeline {
             steps {
                 echo 'Stage: Test Manager'
                 echo 'Triggering TM'
-                build(job: '/TestMgrRunOne/main', propagate: true, wait: true)
+                build(job: '/TestMgrRunOne/main', parameters: [string(name: 'TestName', value: "SomeTestName")], wait: true)
             }
         }
         stage('Cleanup') {
